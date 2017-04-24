@@ -4,6 +4,7 @@
 // This makes r.js optimization very simple.
 requirejs.config({
     baseUrl: 'lib',
+    waitSeconds: 200,
     paths: {
       app: '../app'
     },
