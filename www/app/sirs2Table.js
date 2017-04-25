@@ -45,7 +45,12 @@
 
      SIRS2TableGrid: function () {
        var formEditingOptions = {
-     
+         reloadAfterSubmit:true,
+         closeAfterAdd:true,
+         afterSubmit: function () {
+           $(this).jqGrid("setGridParam", {datatype: 'json'});
+           return [true];
+         }
        }
        return grid.jqGrid ({
          url: './php/sirs2Table.php?action=get',
@@ -77,7 +82,7 @@
            records: function(obj) {return obj.length;}
          },
          ondblClickRow: function(id) {
-           grid.jqGrid('editGridRow',id);
+           grid.jqGrid('editGridRow',id,formEditingOptions);
          },
 //      }).navGrid(pager.selector, {
       }).navGrid('#sirs2_pager', {
@@ -88,15 +93,19 @@
           view:true,
           refresh:true
           
-      },formEditingOptions,formEditingOptions,{
+      },formEditingOptions,
+      {closeAfterSubmit:true},{    
+//      formEditingOptions,{
        // override delete func to get additional params
        // deleting based on datetime value, sketchy!
        // ...also Date is a reserved word. (Bad!)
+        /*
         onclickSubmit: function (options, Date) {
           return {
             Date: $(this).jqGrid('getCell', Date, 'Date')
           };
         }
+        */
       }); 
      } 
    } 
