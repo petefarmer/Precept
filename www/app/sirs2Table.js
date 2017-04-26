@@ -5,16 +5,16 @@
  var grid,pager;
    return {
     sirs2Button: $(function() {
-      var url = 'http://localhost/REST/CALLMLM?mlmName=SIRS-Notification2&mlmInstitution=Medexter Healthcare, Vienna, Austria';
+      var url = 'http://dev.precepthealth.ch:8079/REST/CALLMLM?mlmName=SIRS-Notification2&mlmInstitution=Medexter Healthcare, Vienna, Austria';
       $('#sirs2Button').click(function(e) {
       $.ajax({
         url: url,
         type:'POST',
-        crossDomain:true,
-//        dataType:'json',
-        xhrFields: {
-          withCredentials: true
-        },
+//        crossDomain:true,
+        dataType:'json',
+//        xhrFields: {
+//          withCredentials: true
+//        },
         headers: {
          'Authorization':'Basic YWRtaW46czNjcmV0',
          'Accept':'application/json',
@@ -61,8 +61,9 @@
          loadonce: true,
          shrinkToFit: false,
          width: 500,
-         colNames: ['Patient ID','Date','Temp.','Heart rate','Resp. rate','PaCO2','WB cell count','Immature band'],
+         colNames: ['id','Patient ID','Date','Temp.','Heart rate','Resp. rate','PaCO2','WB cell count','Immature band'],
          colModel: [
+           {name: 'id', index: 'id', hidden:true},
            {name: 'IDPatient', index: 'IDPatient', editable:true},
            {name: 'Date', index: 'Date'},
            {name: 'temperature', index: 'temperature', editable:true},

@@ -26,14 +26,14 @@ function edit() {
   $conn = mysqli_connect("localhost", "arden", "arden", "SIRSDB");
   switch($_POST['oper']) {
     case "add":
-      $query = "INSERT INTO sirsvalues2 VALUES ('$_POST[IDPatient]', now(), '$_POST[temperature]', '$_POST[heartRate]', '$_POST[respRate]', '$_POST[PaCO2]', '$_POST[WBcellCount]', '$_POST[immatureBand]')";
+      $query = "INSERT INTO sirsvalues2 VALUES (NULL,'$_POST[IDPatient]', now(), '$_POST[temperature]', '$_POST[heartRate]', '$_POST[respRate]', '$_POST[PaCO2]', '$_POST[WBcellCount]', '$_POST[immatureBand]')";
       mysqli_query($conn,$query) or die(mysql_error());;
       break;
     case "edit":
       // not implemented
       break;
     case "del":
-      $query = "DELETE FROM sirsvalues2 WHERE  Date = '$_POST[Date]'";
+      $query = "DELETE FROM sirsvalues2 WHERE id = '$_POST[id]'";
       mysqli_query($conn,$query) or die(mysql_error());;
       break;
   }
