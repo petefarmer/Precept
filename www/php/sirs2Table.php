@@ -10,7 +10,7 @@ if ($action == 'get') {
 
 function get() {
   $mysqli = new mysqli("localhost", "arden", "arden", "SIRSDB");
-  $query = "SELECT * FROM SIRSvalues2";
+  $query = "SELECT * FROM sirsvalues2";
   $results = array();
   if ($result = $mysqli->query($query)) {
     while ($row = $result->fetch_assoc()) {
@@ -26,14 +26,14 @@ function edit() {
   $conn = mysqli_connect("localhost", "arden", "arden", "SIRSDB");
   switch($_POST['oper']) {
     case "add":
-      $query = "INSERT INTO SIRSvalues2 VALUES ('$_POST[IDPatient]', now(), '$_POST[temperature]', '$_POST[heartRate]', '$_POST[respRate]', '$_POST[PaCO2]', '$_POST[WBcellCount]', '$_POST[immatureBand]')";
+      $query = "INSERT INTO sirsvalues2 VALUES ('$_POST[IDPatient]', now(), '$_POST[temperature]', '$_POST[heartRate]', '$_POST[respRate]', '$_POST[PaCO2]', '$_POST[WBcellCount]', '$_POST[immatureBand]')";
       mysqli_query($conn,$query) or die(mysql_error());;
       break;
     case "edit":
       // not implemented
       break;
     case "del":
-      $query = "DELETE FROM SIRSvalues2 WHERE  Date = '$_POST[Date]'";
+      $query = "DELETE FROM sirsvalues2 WHERE  Date = '$_POST[Date]'";
       mysqli_query($conn,$query) or die(mysql_error());;
       break;
   }

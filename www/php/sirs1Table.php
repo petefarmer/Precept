@@ -9,7 +9,7 @@ if ($action == 'get') {
 function get() {
 $mysqli = new mysqli("localhost", "arden", "arden", "SIRSDB");
 
-$query = "SELECT * FROM SIRSvalues";
+$query = "SELECT * FROM sirsvalues";
 
 $results = array();
 

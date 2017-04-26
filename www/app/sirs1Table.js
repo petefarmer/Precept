@@ -6,16 +6,16 @@
    return {
 
     sirs1Button: $(function() {
-var url = 'http://localhost/REST/CALLMLM?mlmName=SIRS-Notification1&mlmInstitution=Medexter Healthcare, Vienna, Austria';
+var url = 'http://dev.precepthealth.ch:8079/REST/CALLMLM?mlmName=SIRS-Notification1&mlmInstitution=Medexter Healthcare, Vienna, Austria';
       $('#sirs1Button').click(function(e) {
       $.ajax({
         url: url,
         type:'POST',
-        crossDomain:true,
+//        crossDomain:true,
         dataType:'json',
-        xhrFields: {
-          withCredentials: true
-        },
+//        xhrFields: {
+//          withCredentials: true
+//        },
         headers: {
          'Authorization':'Basic YWRtaW46czNjcmV0',
          'Accept':'application/json',
