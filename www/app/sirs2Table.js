@@ -38,7 +38,7 @@
 
     patientMenu: function() {
       $.ajax({
-        url: './php/getPatientMenu',
+        url: './php/getPatientMenu.php',
       }).done( function(data) {
         $("#patientMenuContainer").html(data);
         $("#patientMenu").selectmenu({
