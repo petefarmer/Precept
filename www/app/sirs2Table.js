@@ -7,7 +7,8 @@
     sirs2Button: $(function() {
       var url = 'http://dev.precepthealth.ch:8079/REST/CALLMLM?mlmName=SIRS-Notification2&mlmInstitution=Medexter Healthcare, Vienna, Austria';
       $('#sirs2Button').click(function(e) {
-      var patientid = $('#patientMenu').val();
+//      var patientid = $('#patientMenu').val();
+//      console.log("button value =",patiendid);
       $.ajax({
         url: url,
         type:'POST',
@@ -21,7 +22,7 @@
          'Accept':'application/json',
          'Content-Type':'application/json'
         },
-        data: JSON.stringify({ "type": "number", "primaryTime": null, "applicability": 1, "value": patientid })
+        data: JSON.stringify({ "type": "number", "primaryTime": null, "applicability": 1, "value": 126 })
 
       }).done( function(data) {
         var msg = data.value;
