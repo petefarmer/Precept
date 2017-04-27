@@ -28,6 +28,7 @@ var url = 'http://dev.precepthealth.ch:8079/REST/CALLMLM?mlmName=SIRS-Notificati
         $("#sirs2ButtonDialogText").text("value:" + msg);
         $(function(data) {
          $("#sirs2ButtonDialog").dialog();
+           title: "SIRS test result"
         });
         console.log(data);
         console.log(data.value);

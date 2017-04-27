@@ -2,15 +2,10 @@
 // @compilation_level SIMPLE_OPTIMIZATIONS
 
 /**
- * @license jqGrid  4.7.0 - jQuery Grid
+ * @license Guriddo jqGrid JS 4.7.1 (2014-12-16)
  * Copyright (c) 2008, Tony Tomov, tony@trirand.com
- * Dual licensed under the MIT and GPL licenses
- * http://www.opensource.org/licenses/mit-license.php
- * http://www.gnu.org/licenses/gpl-2.0.html
- * Date: 2014-12-08
- *
- * Incorporating three additional fixes over 4.7.0
- * Date: 2015-08-6
+ * 
+ * License: http://guriddo.net/?page_id=103334
  */
 //jsHint options
 /*jshint evil:true, eqeqeq:false, eqnull:true, devel:true */
@@ -20,7 +15,7 @@
 "use strict";
 $.jgrid = $.jgrid || {};
 $.extend($.jgrid,{
-	version : "4.7.0",
+	version : "4.7.1",
 	htmlDecode : function(value){
 		if(value && (value==='&nbsp;' || value==='&#160;' || (value.length===1 && value.charCodeAt(0)===160))) { return "";}
 		return !value ? value : String(value).replace(/&gt;/g, ">").replace(/&lt;/g, "<").replace(/&quot;/g, '"').replace(/&amp;/g, "&");		
@@ -4020,15 +4015,6 @@ $.jgrid.extend({
 /*jshint eqeqeq:false */
 /*global jQuery */
 (function($){
-/*
-**
- * jqGrid extension for cellediting Grid Data
- * Tony Tomov tony@trirand.com
- * http://trirand.com/blog/ 
- * Dual licensed under the MIT and GPL licenses:
- * http://www.opensource.org/licenses/mit-license.php
- * http://www.gnu.org/licenses/gpl-2.0.html
-**/ 
 /**
  * all events and options here are aded anonynous and not in the base grid
  * since the array is to big. Here is the order of execution.
@@ -4516,14 +4502,6 @@ $.jgrid.extend({
 /*jshint eqeqeq:false */
 /*global jQuery */
 (function($){
-/*
- * jqGrid common function
- * Tony Tomov tony@trirand.com
- * http://trirand.com/blog/ 
- * Dual licensed under the MIT and GPL licenses:
- * http://www.opensource.org/licenses/mit-license.php
- * http://www.gnu.org/licenses/gpl-2.0.html
-*/
 "use strict";
 $.extend($.jgrid,{
 // Modal functions
@@ -6207,14 +6185,6 @@ $.jgrid.extend({
 });
 })(jQuery);
 /*
- * jqFilter  jQuery jqGrid filter addon.
- * Copyright (c) 2011, Tony Tomov, tony@trirand.com
- * Dual licensed under the MIT and GPL licenses
- * http://www.opensource.org/licenses/mit-license.php
- * http://www.gnu.org/licenses/gpl-2.0.html
- * 
- * The work is inspired from this Stefan Pirvu
- * http://www.codeproject.com/KB/scripting/json-filtering.aspx
  *
  * The filter uses JSON entities to hold filter rules and groups. Here is an example of a filter:
 
@@ -6921,14 +6891,6 @@ $.extend($.fn.jqFilter,{
 /*jshint eqeqeq:false, eqnull:true, devel:true */
 /*global xmlJsonClass, jQuery */
 (function($){
-/**
- * jqGrid extension for form editing Grid Data
- * Tony Tomov tony@trirand.com
- * http://trirand.com/blog/
- * Dual licensed under the MIT and GPL licenses:
- * http://www.opensource.org/licenses/mit-license.php
- * http://www.gnu.org/licenses/gpl-2.0.html
-**/
 "use strict";
 var rp_ge = {};
 $.jgrid.extend({
@@ -9567,15 +9529,6 @@ $.jgrid.extend({
 /*jshint eqeqeq:false, eqnull:true, devel:true */
 /*global jQuery, xmlJsonClass */
 (function($){
-/*
- * jqGrid extension for constructing Grid Data from external file
- * Tony Tomov tony@trirand.com
- * http://trirand.com/blog/ 
- * Dual licensed under the MIT and GPL licenses:
- * http://www.opensource.org/licenses/mit-license.php
- * http://www.gnu.org/licenses/gpl-2.0.html
-**/ 
-
 "use strict";
     $.jgrid.extend({
         jqGridImport : function(o) {
@@ -9782,14 +9735,6 @@ $.jgrid.extend({
 /*jshint eqeqeq:false, eqnull:true, devel:true */
 /*global jQuery */
 (function($){
-/**
- * jqGrid extension for manipulating Grid Data
- * Tony Tomov tony@trirand.com
- * http://trirand.com/blog/ 
- * Dual licensed under the MIT and GPL licenses:
- * http://www.opensource.org/licenses/mit-license.php
- * http://www.gnu.org/licenses/gpl-2.0.html
-**/ 
 "use strict";
 $.jgrid.inlineEdit = $.jgrid.inlineEdit || {};
 $.jgrid.extend({
@@ -10995,14 +10940,6 @@ $.jgrid.extend({
 /*jshint eqeqeq:false */
 /*global jQuery */
 (function($){
-/**
- * jqGrid pivot functions
- * Tony Tomov tony@trirand.com
- * http://trirand.com/blog/
- * Dual licensed under the MIT and GPL licenses:
- * http://www.opensource.org/licenses/mit-license.php
- * http://www.gnu.org/licenses/gpl-2.0.html
-*/
 "use strict";
 // To optimize the search we need custom array filter
 // This code is taken from
@@ -11500,14 +11437,6 @@ $.jgrid.extend({
 /*jshint eqeqeq:false */
 /*global jQuery */
 (function($){
-/**
- * jqGrid extension for SubGrid Data
- * Tony Tomov tony@trirand.com
- * http://trirand.com/blog/ 
- * Dual licensed under the MIT and GPL licenses:
- * http://www.opensource.org/licenses/mit-license.php
- * http://www.gnu.org/licenses/gpl-2.0.html
-**/
 "use strict";
 $.jgrid.extend({
 setSubGrid : function () {
@@ -11910,15 +11839,6 @@ jQuery(selector).each(function() {
 	}
 });
 };
-/**
- * jqGrid extension - Tree Grid
- * Tony Tomov tony@trirand.com
- * http://trirand.com/blog/
- * Dual licensed under the MIT and GPL licenses:
- * http://www.opensource.org/licenses/mit-license.php
- * http://www.gnu.org/licenses/gpl.html
-**/
-
 /*jshint eqeqeq:false */
 /*global jQuery */
 (function($) {

@@ -12,8 +12,8 @@ requirejs.config({
     shim: {
                                  en: ['jqgrid'], // forget i18n for now 
                       themeswitcher: ['jquery'],
-//			     jqgrid: ['jquery'],
-			     jsgrid: ['jquery'],
+			     jqgrid: ['jquery'],
+//			     jsgrid: ['jquery'],
                   jquerymultiselect: ['jquery'],
             jquerymultiselectfilter: ['jquery']
     },
@@ -37,7 +37,6 @@ requirejs.config({
 });
 // Load the main app file. 
 // Our application logic in app/main.js.
-//requirejs(['jquery', 'jqueryui', 'jqgrid'], function() {
-requirejs(['jquery', 'jqueryui', 'jsgrid'], function() {
+requirejs(['jquery', 'jqueryui', 'jqgrid'], function() {
 	requirejs(['app/main']);
 });

@@ -9,7 +9,7 @@ define(function (require) {
 
 // Load all the 3rd-party modules
 //    var g = require('jqgrid');
-    var g = require('jsgrid');
+//    var g = require('jqgrid');
     var l = require('en');
     var ts = require('themeswitcher');
     var ms = require('jquerymultiselect');
@@ -17,7 +17,7 @@ define(function (require) {
     
 // turn on themeswitcher
     $("#switcher").themeswitcher({
-       imgPath: './img/themeImages/'
+       imgPath: './img/images/'
     });
     
     var drg = require('./drgTable');
