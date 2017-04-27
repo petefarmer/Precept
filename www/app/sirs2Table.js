@@ -7,6 +7,7 @@
     sirs2Button: $(function() {
       var url = 'http://dev.precepthealth.ch:8079/REST/CALLMLM?mlmName=SIRS-Notification2&mlmInstitution=Medexter Healthcare, Vienna, Austria';
       $('#sirs2Button').click(function(e) {
+      var patientid = $('#patientMenu').val();
       $.ajax({
         url: url,
         type:'POST',
@@ -20,7 +21,7 @@
          'Accept':'application/json',
          'Content-Type':'application/json'
         },
-        data: JSON.stringify({ "type": "number", "primaryTime": null, "applicability": 1, "value": 123 })
+        data: JSON.stringify({ "type": "number", "primaryTime": null, "applicability": 1, "value": patientid })
 
       }).done( function(data) {
         var msg = data.value;
@@ -35,6 +36,24 @@
       })
     }),
 
+    patientMenu: function() {
+      $.ajax({
+        url: './php/getPatientMenu',
+      }).done( function(data) {
+        $("#patientMenuContainer").html(data);
+        $("#patientMenu").selectmenu({
+          width:100,        
+          select: function(event, ui) {
+            var value = $(this).val();
+            console.log("value =",value);
+          }
+        });
+
+        
+      })
+    },
+
+
      setGrid: function(sel) {
        grid = $(sel);
      },
@@ -47,13 +66,15 @@
        var formEditingOptions = {
          reloadAfterSubmit:true,
          closeAfterAdd:true,
-         afterSubmit: function () {
-           $(this).jqGrid("setGridParam", {datatype: 'json'});
-           return [true];
+         afterComplete: function () {
+           grid.setGridParam({datatype: 'json'}).trigger('reloadGrid');
+           patientMenu();
          }
        }
        return grid.jqGrid ({
          url: './php/sirs2Table.php?action=get',
+//         url: 'http://dev.precepthealth.ch/php/sirs2Table.php?action=get',
+//         editurl: 'http://dev.precepthealth.ch/php/sirs2Table.php?action=edit',
          editurl: './php/sirs2Table.php?action=edit',
          datatype: 'json',
          method: 'POST',
@@ -88,25 +109,14 @@
 //      }).navGrid(pager.selector, {
       }).navGrid('#sirs2_pager', {
           add:true, 
-          edit:false,
+          edit:true,
           del:true,
           search:true,
           view:true,
           refresh:true
           
       },formEditingOptions,
-      {closeAfterSubmit:true},{    
-//      formEditingOptions,{
-       // override delete func to get additional params
-       // deleting based on datetime value, sketchy!
-       // ...also Date is a reserved word. (Bad!)
-        /*
-        onclickSubmit: function (options, Date) {
-          return {
-            Date: $(this).jqGrid('getCell', Date, 'Date')
-          };
-        }
-        */
+      formEditingOptions,{    
       }); 
      } 
    } 

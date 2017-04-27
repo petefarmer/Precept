@@ -36,6 +36,7 @@ define(function (require) {
     sirs2.setGrid("#sirs2_table");
     sirs2.setPager("sirs2_pager");
     sirs2.SIRS2TableGrid();
+    sirs2.patientMenu();
     $('#sirs2_table_container').draggable();
 
 
