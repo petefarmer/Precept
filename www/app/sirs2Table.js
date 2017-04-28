@@ -4,56 +4,6 @@
  define(function () {
  var grid,pager;
    return {
-    sirs2Button: $(function() {
-      var url = 'http://dev.precepthealth.ch:8079/REST/CALLMLM?mlmName=SIRS-Notification2&mlmInstitution=Medexter Healthcare, Vienna, Austria';
-      $('#sirs2Button').click(function(e) {
-//      var patientid = $('#patientMenu').val();
-//      console.log("button value =",patiendid);
-      $.ajax({
-        url: url,
-        type:'POST',
-//        crossDomain:true,
-        dataType:'json',
-//        xhrFields: {
-//          withCredentials: true
-//        },
-        headers: {
-         'Authorization':'Basic YWRtaW46czNjcmV0',
-         'Accept':'application/json',
-         'Content-Type':'application/json'
-        },
-        data: JSON.stringify({ "type": "number", "primaryTime": null, "applicability": 1, "value": 126 })
-
-      }).done( function(data) {
-        var msg = data.value;
-        $("#sirs2ButtonDialogText").text("value:" + msg);
-        $(function(data) {
-         $("#sirs2ButtonDialog").dialog();
-        });
-        console.log(data);
-        console.log(data.value);
-        
-      })
-      })
-    }),
-
-    patientMenu: function() {
-      $.ajax({
-        url: './php/getPatientMenu.php',
-      }).done( function(data) {
-        $("#patientMenuContainer").html(data);
-        $("#patientMenu").selectmenu({
-          width:100,        
-          select: function(event, ui) {
-            var value = $(this).val();
-            console.log("value =",value);
-          }
-        });
-
-        
-      })
-    },
-
 
      setGrid: function(sel) {
        grid = $(sel);
@@ -69,7 +19,6 @@
          closeAfterAdd:true,
          afterComplete: function () {
            grid.setGridParam({datatype: 'json'}).trigger('reloadGrid');
-           patientMenu();
          }
        }
        return grid.jqGrid ({

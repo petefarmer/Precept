@@ -30,15 +30,16 @@ define(function (require) {
     sirs1.setGrid("#sirs1_table");
     sirs1.setPager("sirs1_pager");
     sirs1.SIRS1TableGrid();
+//    sirs1.patientMenu();
     $('#sirs1_table_container').draggable();
-
+/*
     var sirs2 = require('./sirs2Table');
     sirs2.setGrid("#sirs2_table");
     sirs2.setPager("sirs2_pager");
     sirs2.SIRS2TableGrid();
     sirs2.patientMenu();
     $('#sirs2_table_container').draggable();
-
+*/
 
     $(function() {
       var tabs = $('#tabs').tabs();
