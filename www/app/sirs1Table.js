@@ -2,7 +2,7 @@
  * @module app/sirs1
  */
  define(function () {
- var grid,pager;
+ var grid,pager,thePatient;
    return {
 
      setGrid: function(sel) {
@@ -25,7 +25,7 @@
          'Accept':'application/json',
          'Content-Type':'application/json'
         },
-        data: JSON.stringify({ "type": "number", "primaryTime": null, "applicability": 1, "value": 0 })
+        data: JSON.stringify({ "type": "number", "primaryTime": null, "applicability": 1, "value": 123 })
 
       }).done( function(data) {
         var msg = data.value;
@@ -43,51 +43,45 @@
     runMLM2Button: $(function() {
       var url = 'http://dev.precepthealth.ch:8079/REST/CALLMLM?mlmName=SIRS-Notification2&mlmInstitution=Medexter Healthcare, Vienna, Austria';
       $('#runMLM2Button').click(function(e) {
-//      var patientid = $('#patientMenu').val();
-//      console.log("button value =",patiendid);
+      var row = grid.jqGrid('getGridParam','selrow');
+      if(!row) {
+       $("<div>Please select a row.</div>").dialog({
+         modal:true,
+         buttons: [{
+           text: "Ok",
+           click: function() {
+             $(this).dialog("close");
+           }
+         }]
+       });
+       return;
+      }
+      var rowData = grid.jqGrid('getRowData',row);
+      var thePatient = rowData.IDPatient;
+
       $.ajax({
         url: url,
         type:'POST',
-//        crossDomain:true,
         dataType:'json',
-//        xhrFields: {
-//          withCredentials: true
-//        },
         headers: {
          'Authorization':'Basic YWRtaW46czNjcmV0',
          'Accept':'application/json',
          'Content-Type':'application/json'
         },
-        data: JSON.stringify({ "type": "number", "primaryTime": null, "applicability": 1, "value": 123 })
+        data: JSON.stringify({ "type": "number", "primaryTime": null, "applicability": 1, "value": thePatient })
 
       }).done( function(data) {
         var msg = data.value;
+        if(!msg) {
+          msg = "No SIRS detected."
+        }
         $("#runMLM2ButtonDialogText").text("value:" + msg);
         $(function(data) {
          $("#runMLM2ButtonDialog").dialog();
         });
-        console.log(data);
-        console.log(data.value);
-        
       })
       })
     }),
-
-    patientMenu: function() {
-      $.ajax({
-        url: './php/getPatientMenu.php',
-      }).done( function(data) {
-        $("#patientMenuContainer").html(data);
-        $("#patientMenu").selectmenu({
-          width:100,        
-          select: function(event, ui) {
-            var value = $(this).val();
-            console.log("value =",value);
-          }
-        });
-      })
-    },
-
 
      SIRS1TableGrid: function () {
      var lastsel2;
@@ -113,10 +107,12 @@
          caption: 'SIRS Table 1',
          pager: '#sirs1_pager',
          editurl: './php/sirs1Table.php?action=edit',
-         onSelectRow: function(id) {
+         ondblClickRow: function(id) {
            if(id && id!=lastsel2) {
              grid.restoreRow(lastsel2);
              grid.editRow(id,true);
+//             data = grid.jqGrid('getRowData',id);
+//             thePatient = data.IDPatient;
              lastset2=id;
            }
          },
