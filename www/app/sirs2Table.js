@@ -2,7 +2,7 @@
  * @module app/sirs2
  */
  define(function () {
- var grid,pager;
+ var grid,pager,patientId;
    return {
 
      setGrid: function(sel) {
@@ -13,6 +13,48 @@
        pager = $(sel);
      },
 
+     patientMenu: function() {
+       $.ajax({
+         url: './php/getPatientMenu.php',
+       }).done( function(data) {
+         $("#patientMenuContainer").html(data);
+         $("#patientMenu").selectmenu({
+           width:100, 
+           select: function(event, ui) {
+             var value = $(this).val();
+             console.log("value =",value);
+             patientId = value;
+           }
+         });
+       })
+     },
+
+    runMLM4Button: $(function() {
+      var url = 'http://dev.precepthealth.ch:8079/REST/CALLMLM?mlmName=SIRS-Notification4&mlmInstitution=Medexter Healthcare, Vienna, Austria';
+      $('#runMLM4Button').click(function(e) {
+      $.ajax({
+        url: url,
+        type:'POST',
+        dataType:'json',
+        headers: {
+         'Authorization':'Basic YWRtaW46czNjcmV0',
+         'Accept':'application/json',
+         'Content-Type':'application/json'
+        },
+        data: JSON.stringify({ "type": "number", "primaryTime": null, "applicability": 1, "value": patientId })
+
+      }).done( function(data) {
+        var msg = data.value;
+        if(!msg) {
+          msg = "No SIRS detected."
+        }
+        $("#runMLM4ButtonDialogText").text("value:" + msg);
+        $(function(data) {
+         $("#runMLM4ButtonDialog").dialog();
+        });
+      })
+      })
+    }),
      SIRS2TableGrid: function () {
        var formEditingOptions = {
          reloadAfterSubmit:true,

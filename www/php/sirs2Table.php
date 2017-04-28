@@ -30,7 +30,9 @@ function edit() {
       mysqli_query($conn,$query) or die(mysql_error());;
       break;
     case "edit":
-      // not implemented
+      $query = "UPDATE sirsvalues2 SET temperature = '$_POST[temperature]', heartRate = '$_POST[heartRate]', respRate = '$_POST[respRate]', PaCO2 = '$_POST[PaCO2]', WBcellCount = '$_POST[WBcellCount]', immatureBand = '$_POST[immatureBand]' WHERE id='$_POST[id]'";
+      echo $query;
+      mysqli_query($conn,$query) or die(mysql_error());;
       break;
     case "del":
       $query = "DELETE FROM sirsvalues2 WHERE id = '$_POST[id]'";

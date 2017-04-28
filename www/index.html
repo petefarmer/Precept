@@ -21,7 +21,8 @@
 
      <div id="tabs">
       <ul>
-		<li><a href="#tabs-1">SIRS</a></li>
+		<li><a href="#tabs-1">SIRS 1</a></li>
+		<li><a href="#tabs-1a">SIRS 2</a></li>
 		<li><a href="#tabs-2">CLABSI</a></li>
 		<li><a href="#tabs-3">High Cost Medications</a></li>
 		<li><a href="#tabs-4">SCORES</a></li>
@@ -32,10 +33,15 @@
 
       <div id="tabs-1">
        <h2>SIRS/SEPSIS</h2>
+       <p>
+        Simple test of a single patient record for SIRS on six parameters. Double-click to edit db table values.
+       </p>
        <div id="mlm2PDFContainer">
+        <p>
+        Inspect the MLM here:
         <a download href="./pdf/SIRS-Notification2.pdf">SIRS-Notification2.mlm<img class="pdficon" src="./img/adobe-pdf-icon.svg"></a>
        </div id="mlm2PDFContainer">
-
+        </p>
        <div id="sirs1_table_container">
         <table id="sirs1_table"></table id="drg_table">
         <div id="sirs1_pager"></div id="drg_pager">
@@ -47,12 +53,33 @@
         <div id="runMLM2ButtonDialogText"></div id="runMLM2ButtonDialogText">
        </div id="runMLM2ButtonDialog">
 
-       <!-- div id="sirs2_table_container">
+      </div id="tabs-1">
+
+      <div id="tabs-1a">
+
+       <h2>SIRS/SEPSIS</h2>
+       <p>
+       Besides  checking for the  most  recent  patient  ID  entry, this  MLM  also  checks for overalerting. If the definition for sending a SIRS alert is met by the most recent data, the MLM checks all    entries of the last 24 hours. I f one of these entries also meets the SIRS criteria ,  no alert is sent. This ensures that the MLM sends not more than one alert per 24 hours . 
+       </p>
+       <div id="mlm4PDFContainer">
+        <p>
+        Inspect the MLM here:
+        <a download href="./pdf/SIRSnotification4.pdf">SIRSnotification4.mlm<img class="pdficon" src="./img/adobe-pdf-icon.svg"></a>
+       </div id="mlm4PDFContainer">
+        </p>
+       <div id="sirs2_table_container">
         <table id="sirs2_table"></table id="drg_table">
         <div id="sirs2_pager"></div id="drg_pager">
-       </div id="sirs2_table_container" -->
+       </div id="sirs2_table_container">
 
-      </div id="tabs-1">
+       <div id="patientMenuContainer"></div id="patientMenuContainer">
+
+        <button id="runMLM4Button" type="submit" class="ui-state-default ui-corner-all ui-state-focus" type="button">Run MLM</button>
+       <div id="runMLM4ButtonDialog">
+        <div id="runMLM4ButtonDialogText"></div id="runMLM4ButtonDialogText">
+       </div id="runMLM4ButtonDialog">
+
+      </div id="tabs-1a">
 
       <div id="tabs-2"> 
        <h2>CLABSI/NOSOCOMIAL</h2>
