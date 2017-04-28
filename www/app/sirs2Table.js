@@ -46,7 +46,7 @@
       }).done( function(data) {
         var msg = data.value;
         if(!msg) {
-          msg = "No SIRS detected."
+          msg = "No SIRS alert sent."
         }
         $("#runMLM4ButtonDialogText").text("value:" + msg);
         $(function(data) {
@@ -59,6 +59,7 @@
        var formEditingOptions = {
          reloadAfterSubmit:true,
          closeAfterAdd:true,
+         closeAfterEdit:true,
          afterComplete: function () {
            grid.setGridParam({datatype: 'json'}).trigger('reloadGrid');
          }
