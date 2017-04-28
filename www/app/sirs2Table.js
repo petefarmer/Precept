@@ -62,6 +62,20 @@
          closeAfterEdit:true,
          afterComplete: function () {
            grid.setGridParam({datatype: 'json'}).trigger('reloadGrid');
+       //    $(this).patientMenu();
+       $.ajax({
+         url: './php/getPatientMenu.php',
+       }).done( function(data) {
+         $("#patientMenuContainer").html(data);
+         $("#patientMenu").selectmenu({
+           width:100, 
+           select: function(event, ui) {
+             var value = $(this).val();
+             console.log("value =",value);
+             patientId = value;
+           }
+         });
+       })
          }
        }
        return grid.jqGrid ({
