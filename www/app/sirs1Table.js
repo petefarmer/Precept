@@ -116,7 +116,7 @@
              lastset2=id;
            }
          },
-      });
+      }).gridResize();
      } 
    } 
  });
