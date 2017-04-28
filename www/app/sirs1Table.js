@@ -104,7 +104,7 @@
            {name: 'immatureBand', index: 'immatureBand', editable:true}
          ],
          viewrecords: true,
-         caption: 'SIRS Table 1',
+         caption: 'Patient Monitor Data - SIRS',
          pager: '#sirs1_pager',
          editurl: './php/sirs1Table.php?action=edit',
          ondblClickRow: function(id) {
