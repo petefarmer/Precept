@@ -32,6 +32,7 @@
     runMLM4Button: $(function() {
       var url = 'http://dev.precepthealth.ch:8079/REST/CALLMLM?mlmName=SIRS-Notification4&mlmInstitution=Medexter Healthcare, Vienna, Austria';
       $('#runMLM4Button').click(function(e) {
+      e.preventDefault();
       $.ajax({
         url: url,
         type:'POST',
